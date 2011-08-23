@@ -3,6 +3,7 @@ package net.thucydides.core.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -93,7 +94,7 @@ class RenderedPageObjectView {
             if (matchingElements.isEmpty()) {
                 return false;
             }            
-            return matchingElements.get(0).isDisplayed();
+            isDisplayed = matchingElements.get(0).isDisplayed();
         } catch (NoSuchElementException noSuchElement) {
             LOGGER.trace("No such element " + noSuchElement);
 			return false;
